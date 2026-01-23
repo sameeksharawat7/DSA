@@ -27,3 +27,4 @@ class Solution {
         arr[j]=temp;
     }
 }
+//n=[1,2,3,4,5,......]
