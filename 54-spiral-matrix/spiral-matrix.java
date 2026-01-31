@@ -4,7 +4,7 @@ class Solution {
         int columns = matrix[0].length;
 
         List<Integer> list = new ArrayList<>();
-
+        //direction for spiralling
         int top = 0;
         int left = 0;
         int right = columns - 1;
