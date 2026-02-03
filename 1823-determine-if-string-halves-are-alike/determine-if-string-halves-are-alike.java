@@ -2,13 +2,12 @@ class Solution {
     public boolean halvesAreAlike(String s) {
         int count1=0;
         int count2=0;
-        char[] arr=s.toCharArray();
-        int n=arr.length/2;
+        int n=s.length()/2;
         for(int i=0;i<n;i++){
-            if(checkVowel(arr[i])){
+            if(checkVowel(s.charAt(i))){
                 count1++;
             }
-            if(checkVowel(arr[i+n])){
+            if(checkVowel(s.charAt(i+n))){
                 count2++;
             }
         }
