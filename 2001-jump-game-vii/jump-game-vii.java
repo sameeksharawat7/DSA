@@ -1,29 +1,23 @@
 class Solution {
     public boolean canReach(String s, int minJump, int maxJump) {
         int n = s.length();
-        boolean[] dp = new boolean[n];
-        dp[0] = true;
+        boolean[] dp=new boolean[n];
+        dp[0]=true;
+        int count=0;
 
-        int reachableCount = 0;
-
-        for (int i = 1; i < n; i++) {
-
-            // Add index entering the window
-            if (i - minJump >= 0 && dp[i - minJump]) {
-                reachableCount++;
+        for(int i=1;i<n;i++){
+            int addindx=i-minJump;
+            if(addindx>=0 && dp[addindx]){
+                count++;
             }
-
-            // Remove index leaving the window
-            if (i - maxJump - 1 >= 0 && dp[i - maxJump - 1]) {
-                reachableCount--;
+            int leaveindx=i-maxJump-1;
+            if(leaveindx>=0 && dp[leaveindx]){
+                count--;
             }
-
-            // If current is '0' and window has reachable index
-            if (s.charAt(i) == '0' && reachableCount > 0) {
-                dp[i] = true;
+            if(count>0 && s.charAt(i)=='0'){
+                dp[i]=true;
             }
         }
-
-        return dp[n - 1];
+        return dp[n-1];
     }
 }
