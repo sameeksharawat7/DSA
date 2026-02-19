@@ -1,43 +1,43 @@
 class Solution {
     public String multiply(String num1, String num2) {
-        char[] s1=solve(num1);
-        char[] s2=solve(num2);
-        int[] res=new int[s1.length+s2.length];
-        for(int i=0;i<s1.length;i++){
-            int carry=0;
-            int start=i;
-            for(int j=0;j<s2.length;j++){
-                int n1=s1[i]-'0';
-                int n2=s2[j]-'0';
-                int sum=(n1*n2)+res[start]+carry;
-                int base=sum%10;
-                carry=sum/10;
-                res[start++]=base;
+
+        // Edge case
+        if (num1.equals("0") || num2.equals("0")) {
+            return "0";
+        }
+
+        int m = num1.length();
+        int n = num2.length();
+
+        int[] res = new int[m + n];
+
+        // Traverse from right to left
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+
+                int digit1 = num1.charAt(i) - '0';
+                int digit2 = num2.charAt(j) - '0';
+
+                int product = digit1 * digit2;
+
+                int pos2 = i + j + 1;  // current position
+                int pos1 = i + j;      // carry position
+
+                int sum = product + res[pos2];
+
+                res[pos2] = sum % 10;          // store unit digit
+                res[pos1] += sum / 10;         // add carry
             }
-            if(carry!=0) res[start]=carry;
         }
-        int i=res.length-1;
-        while(i>0 && res[i]==0){
-            i--;
+
+        // Build result string
+        StringBuilder sb = new StringBuilder();
+        for (int num : res) {
+            if (!(sb.length() == 0 && num == 0)) {
+                sb.append(num);
+            }
         }
-        String ans="";
-        while(i>=0){
-            ans+=res[i];
-            i--;
-        }
-        return ans;
-    }
-    private char[] solve(String num){
-        char[] ans=num.toCharArray();
-        int start=0;
-        int end=ans.length-1;
-        while(start<end){
-            char temp=ans[start];
-            ans[start]=ans[end];
-            ans[end]=temp;
-            start++;
-            end--;
-        }
-        return ans;
+
+        return sb.toString();
     }
 }
