@@ -3,8 +3,8 @@ class Solution {
         int mod = 1000000007;
         long sum=0;
         int count=1;
-        for(int i=1;i<s.length();i++){
-            if(s.charAt(i)==s.charAt(i-1))
+        for(int i=0;i<s.length();i++){
+            if( i<s.length()-1 && s.charAt(i)==s.charAt(i+1))
             {
                 count++;
             }
@@ -14,8 +14,6 @@ class Solution {
                 count=1;
             }
         }
-        sum+=(long) count*(count+1)/2;
-        sum%=mod;
         return (int)sum;
     }
 }
