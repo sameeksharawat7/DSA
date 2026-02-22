@@ -1,42 +1,16 @@
 class Solution {
     public int equalSubstring(String s, String t, int maxCost) {
-        int n = s.length();
-        int low = 0, high = n;
-        int answer = 0;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-
-            if (isValid(s, t, maxCost, mid)) {
-                answer = mid;     // mid length possible
-                low = mid + 1;    // try bigger
-            } else {
-                high = mid - 1;   // try smaller
+        int start=0;
+        int len=0;
+        int sum=0;
+        for(int end=0;end<s.length();end++){
+            sum=sum+Math.abs(s.charAt(end) - t.charAt(end));
+            while(sum>maxCost){
+                sum=sum-Math.abs(s.charAt(start) - t.charAt(start));
+                start++;
             }
+            len=Math.max(len,end-start+1);
         }
-
-        return answer;
-    }
-
-    private boolean isValid(String s, String t, int maxCost, int len) {
-        int n = s.length();
-        int cost = 0;
-
-        // first window of size len
-        for (int i = 0; i < len; i++) {
-            cost += Math.abs(s.charAt(i) - t.charAt(i));
-        }
-
-        if (cost <= maxCost) return true;
-
-        // slide the window
-        for (int i = len; i < n; i++) {
-            cost += Math.abs(s.charAt(i) - t.charAt(i));
-            cost -= Math.abs(s.charAt(i - len) - t.charAt(i - len));
-
-            if (cost <= maxCost) return true;
-        }
-
-        return false;
+        return len;
     }
 }
