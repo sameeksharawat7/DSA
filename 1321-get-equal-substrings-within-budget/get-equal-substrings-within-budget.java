@@ -5,7 +5,7 @@ class Solution {
         int sum=0;
         for(int end=0;end<s.length();end++){
             sum=sum+Math.abs(s.charAt(end) - t.charAt(end));
-            while(sum>maxCost){
+            if(sum>maxCost){
                 sum=sum-Math.abs(s.charAt(start) - t.charAt(start));
                 start++;
             }
