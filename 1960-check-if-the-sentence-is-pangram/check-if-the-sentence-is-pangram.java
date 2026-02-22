@@ -1,12 +1,17 @@
 class Solution {
     public boolean checkIfPangram(String sentence) {
-        ArrayList<Character> list=new ArrayList<>();
+        int[] check=new int[26];
         for(int i=0;i<sentence.length();i++){
-            char c=sentence.charAt(i);
-            if(!list.contains(sentence.charAt(i))){
-                list.add(c);
+            char ch=sentence.charAt(i);
+            if(check[ch-'a']==0){
+                check[ch-'a']++;
             }
         }
-         return list.size()==26;
+        for(int i=0;i<26;i++){
+            if(check[i]==0){
+                return false;
+            }
+        }
+        return true;
     }
 }
