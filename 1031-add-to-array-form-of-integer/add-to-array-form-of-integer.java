@@ -9,11 +9,9 @@ class Solution {
                 numval=num[p];
             }
             int d=k%10;
-            int sum=numval+d+carry;
-
+            int sum=numval+carry+d;
             int digit=sum%10;
             carry=sum/10;
-
             result.add(digit);
             p--;
             k=k/10;
