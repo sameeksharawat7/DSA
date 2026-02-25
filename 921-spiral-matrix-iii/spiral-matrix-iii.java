@@ -24,6 +24,7 @@ class Solution {
                 index++;
             }
             step++;
+
         }
         return res;
     }
