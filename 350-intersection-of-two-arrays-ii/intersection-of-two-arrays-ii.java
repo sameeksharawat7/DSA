@@ -1,19 +1,43 @@
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
+        // Arrays.sort(nums2);
+        // ArrayList<Integer> set = new ArrayList<>();
+        // for(int i:nums1){
+        //     int idx=binarySearch(nums2,i);
+        //     if(idx!=-1){
+        //     set.add(i);
+        //     nums2[idx]=Integer.MIN_VALUE;
+        //     Arrays.sort(nums2);
+        //     }
+        // }
+        // int[] ans=new int[set.size()];
+        // int i=0;
+        // for(int val:set){
+        //     ans[i++]=val;
+        // }
+        // return ans;
+        Arrays.sort(nums1);
         Arrays.sort(nums2);
-        ArrayList<Integer> set = new ArrayList<>();
-        for(int i:nums1){
-            int idx=binarySearch(nums2,i);
-            if(idx!=-1){
-            set.add(i);
-            nums2[idx]=Integer.MIN_VALUE;
-            Arrays.sort(nums2);
+        ArrayList<Integer> arr = new ArrayList<>();
+        int i=0;
+        int j=0;
+        while(i<nums1.length && j<nums2.length){
+            if(nums1[i]==nums2[j]){
+                arr.add(nums1[i]);
+                i++;
+                j++;
+            }
+            else if(nums1[i]<nums2[j]){
+                i++;
+            }
+            else{
+                j++;
             }
         }
-        int[] ans=new int[set.size()];
-        int i=0;
-        for(int val:set){
-            ans[i++]=val;
+        int[] ans=new int[arr.size()];
+        int k=0;
+        for(int val:arr){
+            ans[k++]=val;
         }
         return ans;
     }
