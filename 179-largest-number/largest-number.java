@@ -14,10 +14,10 @@ class Solution {
       if(arr[0].equals("0")){
         return "0";
       }
-      String res="";
+      StringBuilder sb=new StringBuilder();
       for(String value:arr){
-        res+=value;
+        sb.append(value);
       }
-      return res;
+      return sb.toString();
     }
 }
