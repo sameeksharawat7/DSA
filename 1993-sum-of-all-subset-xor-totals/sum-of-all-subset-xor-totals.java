@@ -4,6 +4,6 @@ class Solution {
         for(int n:nums){
             totalxor |= n;
         }
-        return totalxor*(2<<(nums.length-1))/2;
+        return totalxor*(1<<(nums.length-1));
     }
 }
