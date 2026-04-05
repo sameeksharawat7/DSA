@@ -5,7 +5,7 @@ class Solution {
         int end=letters.length-1;
         char ans=letters[0];
         if(target>=letters[end]){
-            return letters[0];
+            return ans;
         }
         while(start<=end){
             int mid=start+(end-start)/2;
