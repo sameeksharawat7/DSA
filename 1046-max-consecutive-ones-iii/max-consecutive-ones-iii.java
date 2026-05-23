@@ -7,7 +7,7 @@ class Solution {
       while(r<nums.length){
         if(nums[r]==0){
             while(numberOfzero<=0){
-                if(nums[l]==0){
+                if(nums[l]<=0){
                     numberOfzero++;
                 }
                 l++;
