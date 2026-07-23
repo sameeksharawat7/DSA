@@ -29,7 +29,7 @@ class Solution {
             else {
 
                 while(!stack.isEmpty()
-                        && stack.peek() != '('
+                        // && stack.peek() != '('
                         && (
                              priority(stack.peek()) > priority(ch) ||
                             (priority(stack.peek()) == priority(ch) && ch != '^')
