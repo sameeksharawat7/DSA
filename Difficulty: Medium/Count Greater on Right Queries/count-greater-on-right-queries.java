@@ -8,8 +8,9 @@ class Solution {
                 if(arr[idx]<arr[j]){
                     count++;
                 }
-                ans[i]=count;
+                
             }
+            ans[i]=count;
         }
         return ans;
     }
